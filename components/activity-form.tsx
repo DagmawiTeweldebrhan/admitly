@@ -3,13 +3,13 @@
 import { useState } from 'react';
 
 export interface ActivityFormData {
-  boldAction: string;
-  organization: string;
-  metrics: string;
-  beneficialImpact: string;
-  impactfulResult: string;
-  exceptionalRecognition: string;
-  specificDetail: string;
+  beneficiaries: string;
+  endeavors: string;
+  actualImpact: string;
+  backlash: string;
+  insights: string;
+  effort: string;
+  solved: string;
 }
 
 interface ActivityFormProps {
@@ -19,65 +19,65 @@ interface ActivityFormProps {
 
 const BEABIES_FIELDS = [
   {
-    id: 'boldAction',
-    label: 'B - Bold Action',
-    placeholder: 'e.g., Founded, Led, Organized, Established',
-    description: 'Leadership verb showing what you initiated',
-    tooltip: 'Use strong action verbs that demonstrate leadership and initiative',
+    id: 'beneficiaries',
+    label: 'B - Beneficiaries',
+    placeholder: 'e.g., 40 high school students, 500 community members, 20 refugee families',
+    description: 'Who exactly did you assist?',
+    tooltip: 'Be specific with numbers and demographics of who you served',
   },
   {
-    id: 'organization',
-    label: 'E - Energetic Role/Organization',
-    placeholder: 'e.g., School debate club, Robotics team, Community center program',
-    description: 'The organization or context',
-    tooltip: 'What organization or initiative did you lead?',
+    id: 'endeavors',
+    label: 'E - Endeavors',
+    placeholder: 'e.g., Created the curriculum, Taught coding workshops, Organized community events',
+    description: 'What were your daily tasks?',
+    tooltip: 'Describe the specific work you did regularly',
   },
   {
-    id: 'metrics',
-    label: 'A - Active Metrics',
-    placeholder: 'e.g., 15 members, 3 years, managed 50 students',
-    description: 'Scale and numbers',
-    tooltip: 'Include quantifiable metrics showing scope and reach',
+    id: 'actualImpact',
+    label: 'A - Actual Impact',
+    placeholder: 'e.g., Raised 5,000 Birr, 95% graduation rate, 30 students placed in jobs',
+    description: 'Use clear numbers',
+    tooltip: 'Quantify the tangible results and outcomes',
   },
   {
-    id: 'beneficialImpact',
-    label: 'B - Beneficial Impact',
-    placeholder: 'e.g., Student-athletes, 200 community members, underrepresented students',
-    description: 'Who benefited?',
-    tooltip: 'Who did this activity serve or benefit?',
+    id: 'backlash',
+    label: 'B - Backlash',
+    placeholder: 'e.g., Limited internet access, Language barriers, Funding constraints',
+    description: 'What challenges did you face?',
+    tooltip: 'Describe obstacles you overcame',
   },
   {
-    id: 'impactfulResult',
-    label: 'I - Impactful Result',
-    placeholder: 'e.g., Won regional tournament, 100% college enrollment, increased participation 50%',
-    description: 'Measurable outcome',
-    tooltip: 'What concrete results did you achieve?',
+    id: 'insights',
+    label: 'I - Insights',
+    placeholder: 'e.g., Team management, Cross-cultural communication, Problem-solving under pressure',
+    description: 'What skills did you develop?',
+    tooltip: 'Reflect on growth and skills gained',
   },
   {
-    id: 'exceptionalRecognition',
-    label: 'E - Exceptional Recognition',
-    placeholder: 'e.g., Featured in local news, school activity of the year, selectivity/rarity',
-    description: 'Awards or selectivity',
-    tooltip: 'Any special recognition, awards, or what makes this exceptional?',
+    id: 'effort',
+    label: 'E - Effort',
+    placeholder: 'e.g., 15 hrs/week for 6 months, 500+ volunteer hours, Daily commitment for 2 years',
+    description: 'How much time did you commit?',
+    tooltip: 'Show your dedication and time investment',
   },
   {
-    id: 'specificDetail',
-    label: 'S - Specific Detail',
-    placeholder: 'e.g., Only debate org to compete at state level, first of its kind',
-    description: 'Unique distinguishing detail',
-    tooltip: 'What sets this apart from other similar activities?',
+    id: 'solved',
+    label: 'S - Solved',
+    placeholder: 'e.g., Lack of computer skills, Food insecurity, Educational gap in rural areas',
+    description: 'What was the main problem you fixed?',
+    tooltip: 'Identify the core problem you addressed',
   },
 ];
 
 export function ActivityForm({ onSubmit, isLoading }: ActivityFormProps) {
   const [formData, setFormData] = useState<ActivityFormData>({
-    boldAction: '',
-    organization: '',
-    metrics: '',
-    beneficialImpact: '',
-    impactfulResult: '',
-    exceptionalRecognition: '',
-    specificDetail: '',
+    beneficiaries: '',
+    endeavors: '',
+    actualImpact: '',
+    backlash: '',
+    insights: '',
+    effort: '',
+    solved: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

@@ -2,23 +2,23 @@
  * BEABIES Optimization Engine for Common App Entries
  *
  * BEABIES Formula for Activities:
- * B - Bold Action (leadership verb)
- * E - Energetic Role/Organization (context)
- * A - Active Metrics (scale/numbers)
- * B - Beneficial Impact (who benefited)
- * I - Impactful Result (measurable outcome)
- * E - Exceptional Recognition (awards/selectivity)
- * S - Specific Detail (proof point)
+ * B - Beneficiaries: Who exactly did you assist? (e.g., "40 high school students")
+ * E - Endeavors: What were your daily tasks? (e.g., "Created the curriculum")
+ * A - Actual Impact: Use clear numbers. (e.g., "Raised 5,000 Birr")
+ * B - Backlash: What challenges did you face? (e.g., "Limited internet access")
+ * I - Insights: What skills did you develop? (e.g., "Team management")
+ * E - Effort: How much time did you commit? (e.g., "15 hrs/wk for 6 months")
+ * S - Solved: What was the main problem you fixed? (e.g., "Lack of computer skills")
  */
 
 interface ActivityInput {
-  boldAction: string; // e.g., "Founded", "Led"
-  organization: string; // e.g., "School debate club"
-  metrics: string; // e.g., "15 members"
-  beneficialImpact: string; // e.g., "Student-athletes"
-  impactfulResult: string; // e.g., "Won regional tournament"
-  exceptionalRecognition: string; // e.g., "Top school org"
-  specificDetail: string; // e.g., "Only debate org with X achievement"
+  beneficiaries: string; // e.g., "40 high school students"
+  endeavors: string; // e.g., "Created the curriculum"
+  actualImpact: string; // e.g., "Raised 5,000 Birr"
+  backlash: string; // e.g., "Limited internet access"
+  insights: string; // e.g., "Team management"
+  effort: string; // e.g., "15 hrs/wk for 6 months"
+  solved: string; // e.g., "Lack of computer skills"
 }
 
 interface HonorInput {
@@ -77,27 +77,27 @@ function applyTelegramSyntax(text: string): string {
  */
 export function optimizeActivity(input: ActivityInput): OptimizationResult {
   // Leadership-Focused Variation
-  // Emphasizes the bold action and leadership
+  // Emphasizes impact and problem-solving
   const leadershipVariation = applyTelegramSyntax(
-    `${input.boldAction} ${input.organization} with ${input.metrics}. ` +
-    `Focused on ${input.beneficialImpact}; achieved ${input.impactfulResult}. ` +
-    `${input.exceptionalRecognition}.`
+    `Served ${input.beneficiaries}; ${input.endeavors}. ` +
+    `Despite ${input.backlash}, achieved ${input.actualImpact}. ` +
+    `Developed ${input.insights}; solved ${input.solved}.`
   );
 
   // Quantitative-Focused Variation
-  // Emphasizes metrics and measurable impact
+  // Emphasizes measurable impact and effort
   const quantitativeVariation = applyTelegramSyntax(
-    `${input.metrics} in ${input.organization}. ` +
-    `${input.boldAction} initiative serving ${input.beneficialImpact}. ` +
-    `Result: ${input.impactfulResult}; ${input.exceptionalRecognition}.`
+    `${input.actualImpact} for ${input.beneficiaries}. ` +
+    `${input.endeavors} (${input.effort}); overcame ${input.backlash}. ` +
+    `Gained ${input.insights}; resolved ${input.solved}.`
   );
 
   // Concise & Direct Variation
   // Most aggressive compression, maximum impact in minimum words
   const conciseVariation = applyTelegramSyntax(
-    `${input.boldAction} ${input.organization}. ` +
-    `${input.metrics}; ${input.impactfulResult}. ` +
-    `${input.specificDetail}.`
+    `${input.beneficiaries}: ${input.endeavors}. ` +
+    `${input.actualImpact}; ${input.effort}. ` +
+    `Solved: ${input.solved}.`
   );
 
   return {
@@ -174,11 +174,13 @@ export function optimizeHonor(input: HonorInput): OptimizationResult {
 export function validateActivityInput(input: Partial<ActivityInput>): string[] {
   const errors: string[] = [];
 
-  if (!input.boldAction?.trim()) errors.push('Bold Action is required');
-  if (!input.organization?.trim()) errors.push('Organization is required');
-  if (!input.metrics?.trim()) errors.push('Metrics are required');
-  if (!input.beneficialImpact?.trim()) errors.push('Beneficial Impact is required');
-  if (!input.impactfulResult?.trim()) errors.push('Impactful Result is required');
+  if (!input.beneficiaries?.trim()) errors.push('Beneficiaries is required');
+  if (!input.endeavors?.trim()) errors.push('Endeavors is required');
+  if (!input.actualImpact?.trim()) errors.push('Actual Impact is required');
+  if (!input.backlash?.trim()) errors.push('Backlash is required');
+  if (!input.insights?.trim()) errors.push('Insights is required');
+  if (!input.effort?.trim()) errors.push('Effort is required');
+  if (!input.solved?.trim()) errors.push('Solved is required');
 
   return errors;
 }
